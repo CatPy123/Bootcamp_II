@@ -1,6 +1,10 @@
 chrome.runtime.onInstalled.addListener(() => {
   console.log('Bootcamp Helper instalado.');
-  chrome.storage.local.set({ installs: (Date.now()) });
+  // Define valores padrão na instalação
+  chrome.storage.sync.set({
+    enabled: true,
+    favoriteColor: '#ec0089'
+  });
 });
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
@@ -8,4 +12,3 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     sendResponse({ ok: true, time: new Date().toISOString() });
   }
 });
-        

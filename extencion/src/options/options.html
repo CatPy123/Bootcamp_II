@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Opções do Bootcamp Helper</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <h1>Opções do Bootcamp Helper</h1>
+
+    <div class="option">
+        <label>
+            <input type="checkbox" id="featureEnabled">
+            Ativar destaque de links
+        </label>
+    </div>
+
+    <div class="option">
+        <label for="highlightColor">
+            Cor do destaque:
+            <input type="color" id="highlightColor" value="#ec0089">
+        </label>
+    </div>
+
+    <button id="save">Salvar Opções</button>
+    <div id="status"></div>
+
+    <script src="options.js"></script>
+</body>
+</html>
