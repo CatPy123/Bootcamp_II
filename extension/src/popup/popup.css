@@ -1,42 +1,77 @@
-@import url('../styles/global.css');
 
+/* src/popup/popup.css (NOVA VERSÃO) */
 body {
-    width: 250px;
+    font-family: 'Poppins', sans-serif;
+    width: 300px;
     text-align: center;
+    padding: 20px;
+    background-color: #F0F8FF; /* Azul claro "céu" */
 }
 
-h1 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #352F44;
-}
-
-p {
-    font-size: 14px;
+#pet-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     margin-bottom: 20px;
 }
 
-#ping {
-    background-color: #B0A4E5; /* Lavanda */
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 8px; /* Cantos mais arredondados */
-    cursor: pointer;
-    font-size: 14px;
+#pet-image {
+    width: 80px;
+    height: 80px;
+}
+
+#pet-status {
+    margin: 5px 0 0;
     font-weight: 600;
-    transition: background-color 0.2s;
-    width: 80%;
+    color: #555;
 }
 
-#ping:hover {
-    background-color: #988bc7;
+#timer-display {
+    font-size: 56px;
+    font-weight: 700;
+    color: #005A9C;
+    margin: 0;
 }
 
-#status {
-    margin-top: 15px;
-    font-size: 12px;
-    min-height: 1.2em;
-    word-wrap: break-word;
-    font-family: 'Courier New', Courier, monospace;
+#timer-mode {
+    font-size: 16px;
+    color: #666;
+    margin-top: 0;
 }
+
+#controls {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#start-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+#start-btn:hover {
+    background-color: #218838;
+}
+
+#stop-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+#stop-btn:hover {
+    background-color: #c82333;
+}
+
+

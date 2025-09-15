@@ -2,18 +2,23 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Bootcamp Helper</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Focus Pet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-    <h1>Bootcamp Helper</h1>
-    <p>Clique para verificar o status do Service Worker.</p>
-    
-    <button id="ping">Verificar Status</button>
-    
-    <div id="status"></div>
-
+    <div id="pet-container">
+        <img id="pet-image" src="icons/icon128.png" alt="Seu Pet Focado">
+        <p id="pet-status">Level 1 - Feliz</p>
+    </div>
+    <div id="timer-container">
+        <h1 id="timer-display">25:00</h1>
+        <p id="timer-mode">Modo Foco</p>
+    </div>
+    <div id="controls">
+        <button id="start-btn">Iniciar Foco</button>
+        <button id="stop-btn">Desistir</button>
+    </div>
     <script src="popup.js"></script>
 </body>
 </html>
