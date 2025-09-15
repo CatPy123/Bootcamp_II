@@ -20,7 +20,7 @@ function saveOptions() {
 function restoreOptions() {
   // Define valores padrão
   chrome.storage.sync.get(
-    { enabled: true, favoriteColor: '#ec0089' },
+    { enabled: true, favoriteColor: '#E5A4CB' }, // Nova cor padrão (rosé)
     (items) => {
       document.getElementById('featureEnabled').checked = items.enabled;
       document.getElementById('highlightColor').value = items.favoriteColor;

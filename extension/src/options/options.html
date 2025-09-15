@@ -3,7 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <title>Opções do Bootcamp Helper</title>
-    <link rel="stylesheet" href="options.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS ATUALIZADO PARA O NOVO TEMA */
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #FFF8F0; /* Off-white quente */
+            color: #5C5470; /* Cinza escuro quente */
+        }
+        h1 {
+            font-size: 22px;
+            color: #352F44;
+            font-weight: 600;
+        }
+        .option {
+            margin-bottom: 15px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 12px; /* Cantos mais arredondados */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        label {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        input[type="color"] {
+            margin-left: 10px;
+            border: none;
+            background: none;
+            width: 40px;
+            height: 40px;
+        }
+        button {
+            background-color: #B0A4E5; /* Lavanda */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #988bc7;
+        }
+        #status {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #B0A4E5;
+        }
+    </style>
 </head>
 <body>
     <h1>Opções do Bootcamp Helper</h1>
@@ -18,7 +75,7 @@
     <div class="option">
         <label for="highlightColor">
             Cor do destaque:
-            <input type="color" id="highlightColor" value="#ec0089">
+            <input type="color" id="highlightColor" value="#E5A4CB">
         </label>
     </div>
 

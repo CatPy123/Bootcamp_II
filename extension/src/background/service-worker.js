@@ -3,7 +3,7 @@ chrome.runtime.onInstalled.addListener(() => {
   // Define valores padrão na instalação
   chrome.storage.sync.set({
     enabled: true,
-    favoriteColor: '#ec0089'
+    favoriteColor: '#E5A4CB' // Nova cor padrão (rosé)
   });
 });
 
