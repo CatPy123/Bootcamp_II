@@ -1,23 +1,25 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Focus Pet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
     <div id="pet-container">
-        <img id="pet-image" src="icons/icon128.png" alt="Seu Pet Focado">
-        <p id="pet-status">Level 1 - Feliz</p>
+        <img id="pet-image" src="../images/egg.png">
+        <p id="pet-status">Ovo Misterioso</p>
     </div>
     <div id="timer-container">
         <h1 id="timer-display">25:00</h1>
         <p id="timer-mode">Modo Foco</p>
     </div>
+    <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+    </div>
     <div id="controls">
-        <button id="start-btn">Iniciar Foco</button>
+        <button id="start-btn">Iniciar</button>
         <button id="stop-btn">Desistir</button>
+        <button id="reset-btn">Resetar</button>
     </div>
     <script src="popup.js"></script>
 </body>

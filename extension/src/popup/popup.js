@@ -1,39 +1,65 @@
-// src/popup/popup.js (NOVA VERSÃO)
-
 const timerDisplay = document.getElementById('timer-display');
+const progressBar = document.getElementById('progress-bar');
 const startBtn = document.getElementById('start-btn');
 const stopBtn = document.getElementById('stop-btn');
-let countdown; // Para o intervalo que atualiza a tela
+const resetBtn = document.getElementById('reset-btn');
+const petImage = document.getElementById('pet-image');
+const petStatus = document.getElementById('pet-status');
 
-// Função para atualizar o display do timer
-function updateDisplay(minutes, seconds) {
+let countdown;
+
+function updateUI(state) {
+  const minutes = Math.floor(state.timeLeft / 60);
+  const seconds = state.timeLeft % 60;
+  timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  
+  const totalDuration = (state.mode === 'focus' ? 25 : 5) * 60; // Simplificado, idealmente viria do storage.sync
+  const progressPercent = (totalDuration - state.timeLeft) / totalDuration * 100;
+  progressBar.style.width = `${progressPercent}%`;
+
+  petImage.src = `../images/${state.pet.state || 'egg'}.png`;
+  petStatus.textContent = `XP: ${state.pet.xp}`;
+
+  startBtn.disabled = state.isRunning;
+  stopBtn.disabled = !state.isRunning;
+}
+
+function startCountdown(endTime) {
+  if (countdown) clearInterval(countdown);
+  countdown = setInterval(() => {
+    const timeLeft = Math.round((endTime - Date.now()) / 1000);
+    if (timeLeft < 0) {
+      clearInterval(countdown);
+      return;
+    }
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
     timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }, 1000);
 }
 
-// Iniciar o timer
 startBtn.addEventListener('click', () => {
-    chrome.runtime.sendMessage({ command: 'start' }, (response) => {
-        if (response.success) {
-            window.close(); // Fecha o popup para não distrair
-        }
-    });
+  chrome.runtime.sendMessage({ command: 'start' }, () => window.close());
 });
 
-// Parar o timer
 stopBtn.addEventListener('click', () => {
-    chrome.runtime.sendMessage({ command: 'stop' });
+  chrome.runtime.sendMessage({ command: 'stop' }, () => window.close());
 });
 
-// Função principal que roda quando o popup é aberto
-function syncWithBackground() {
-    chrome.storage.local.get(['isRunning', 'timerMinutes', 'mode'], (res) => {
-        updateDisplay(res.timerMinutes, 0); // Atualiza o display inicial
-        // Lógica para atualizar o estado dos botões e do pet...
-    });
-    // Você precisaria de uma lógica mais avançada aqui para mostrar o tempo restante
-    // O background gerencia o alarme, o popup apenas mostra o estado atual
-}
+resetBtn.addEventListener('click', () => {
+    chrome.runtime.sendMessage({ command: 'reset' }, () => window.close());
+});
 
-document.addEventListener('DOMContentLoaded', syncWithBackground);
+// Ao abrir o popup, pegar o estado atual
+chrome.runtime.sendMessage({ command: 'getState' }, (state) => {
+  updateUI(state);
+  if (state.isRunning) {
+    chrome.alarms.get('pomodoroTimer', (alarm) => {
+      if (alarm) {
+        startCountdown(alarm.scheduledTime);
+      }
+    });
+  }
+});
 
 
